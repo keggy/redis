@@ -676,8 +676,9 @@ void sentinelEvent(int level, char *type, sentinelRedisInstance *ri,
 
     /* Use vsprintf for the rest of the formatting if any. */
     if (fmt[0] != '\0') {
+        size_t msglen = strlen(msg);
         va_start(ap, fmt);
-        vsnprintf(msg+strlen(msg), sizeof(msg)-strlen(msg), fmt, ap);
+        vsnprintf(msg+msglen, sizeof(msg)-msglen, fmt, ap);
         va_end(ap);
     }
 
